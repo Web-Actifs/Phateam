@@ -11,7 +11,11 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "Phateam",
     short_name: "Phateam",
     description: "Votre pass de collecte",
-    start_url: "/pass",
+    // Pas de start_url : le manifeste retombe alors sur l'URL depuis
+    // laquelle l'utilisateur a ajouté la page, donc sur SON pass, jeton
+    // compris. Une valeur fixe comme « /pass » rouvrirait une page sans
+    // jeton — Android l'utilise vraiment au lancement, contrairement à
+    // iOS qui repart de l'URL courante.
     display: "standalone",
     background_color: "#ffffff",
     theme_color: "#1b3a6b",

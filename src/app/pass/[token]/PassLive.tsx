@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import { LAST_PASS_KEY } from "../PassRecovery";
 
 /**
  * Le solde, en très gros — l'information principale du pass.
@@ -13,9 +14,11 @@ import { useRouter } from "next/navigation";
  */
 export function PassLive({
   token,
+  shortCode,
   initialBalance,
 }: {
   token: string;
+  shortCode: string;
   initialBalance: number;
 }) {
   const router = useRouter();
@@ -23,6 +26,17 @@ export function PassLive({
   const [display, setDisplay] = useState(initialBalance);
   const [delta, setDelta] = useState<number | null>(null);
   const previous = useRef(initialBalance);
+
+  // Mémorise le pass de cet appareil : /pass sans jeton pourra le rouvrir.
+  // On stocke le code à 6 chiffres et non le jeton, parce qu'il survit à une
+  // réinitialisation du jeu de démonstration.
+  useEffect(() => {
+    try {
+      localStorage.setItem(LAST_PASS_KEY, shortCode);
+    } catch {
+      /* navigation privée : tant pis, le code reste affiché sur le pass */
+    }
+  }, [shortCode]);
 
   // --- scrutation du solde ------------------------------------------
   useEffect(() => {

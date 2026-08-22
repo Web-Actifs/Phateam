@@ -48,7 +48,11 @@ export default async function PassPage({ params }: PageProps<"/pass/[token]">) {
       </header>
 
       {/* Le solde est l'information principale du pass. */}
-      <PassLive token={account.account_token} initialBalance={balance} />
+      <PassLive
+        token={account.account_token}
+        shortCode={account.short_code}
+        initialBalance={balance}
+      />
 
       <section className="mt-7">
         {next ? (
