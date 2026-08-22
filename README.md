@@ -1,4 +1,4 @@
-# Phateam — prototype de démonstration
+# Regard+ — prototype de démonstration
 
 Recyclage récompensé pour porteurs de lentilles de contact. Les porteurs rapportent
 leurs emballages (blisters, opercules, étuis, flacons) chez un opticien partenaire,
@@ -52,7 +52,7 @@ Utilisez donc ces URL, elles restent valides :
 | Actif | `/pass/100002` | `100002` | `2222` | 22 pts | à 3 points d'une récompense — le cas le plus parlant |
 | Ancien | `/pass/100003` | `100003` | `3333` | 249 pts | long historique, deux récompenses déjà dépensées |
 
-Les 120 autres porteurs sont anonymes (`porteur001@demo.phateam.fr` …), avec des
+Les 120 autres porteurs sont anonymes (`porteur001@demo.regardplus.fr` …), avec des
 codes à partir de `200001`.
 
 ## Écrans

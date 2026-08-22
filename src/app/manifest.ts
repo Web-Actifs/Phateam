@@ -8,8 +8,8 @@ import type { MetadataRoute } from "next";
  */
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Phateam",
-    short_name: "Phateam",
+    name: "Regard+",
+    short_name: "Regard+",
     description: "Votre pass de collecte",
     // Pas de start_url : le manifeste retombe alors sur l'URL depuis
     // laquelle l'utilisateur a ajouté la page, donc sur SON pass, jeton

@@ -7,20 +7,20 @@ import { supabaseAdmin } from "@/lib/supabase";
 
 export const dynamic = "force-dynamic";
 
-export const metadata = { title: "Phateam — salle de contrôle" };
+export const metadata = { title: "Regard+ — salle de contrôle" };
 
 const nf = new Intl.NumberFormat("fr-FR");
 
 const ROLES: Record<string, { role: string; usage: string }> = {
-  "nouveau@demo.phateam.fr": {
+  "nouveau@demo.regardplus.fr": {
     role: "Compte neuf",
     usage: "Solde nul. Sert à montrer les états vides et le tout premier crédit.",
   },
-  "actif@demo.phateam.fr": {
+  "actif@demo.regardplus.fr": {
     role: "À trois points du but",
     usage: "Le cas le plus parlant : la barre de progression est presque pleine.",
   },
-  "ancien@demo.phateam.fr": {
+  "ancien@demo.regardplus.fr": {
     role: "Habitué",
     usage: "Huit mois d'historique et deux récompenses déjà dépensées.",
   },
@@ -60,7 +60,7 @@ export default async function DemoPage() {
     <main className="mx-auto w-full max-w-5xl px-8 py-16">
       <header className="border-b border-line pb-10">
         <p className="text-[13px] font-medium uppercase tracking-[0.16em] text-muted">
-          Phateam · Salle de contrôle
+          Regard+ · Salle de contrôle
         </p>
         <h1 className="mt-5 font-display text-[clamp(2.2rem,5vw,3.4rem)] leading-[1.05] tracking-[-0.02em]">
           Tout le prototype, depuis une seule page.

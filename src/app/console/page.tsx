@@ -14,7 +14,7 @@ export default async function ConsoleHome() {
 
   return (
     <main className="mx-auto w-full max-w-2xl px-6 py-14">
-      <p className="text-[13px] font-medium uppercase tracking-[0.14em] text-muted">Phateam</p>
+      <p className="text-[13px] font-medium uppercase tracking-[0.14em] text-muted">Regard+</p>
       <h1 className="mt-3 font-display text-[40px] leading-[1.05] tracking-[-0.01em]">
         Console partenaire
       </h1>

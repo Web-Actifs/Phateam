@@ -1,5 +1,5 @@
 -- =====================================================================
--- Phateam — logique de points
+-- Regard+ — logique de points
 --
 -- Toute écriture de points passe par ces fonctions, appelées en RPC
 -- depuis les routes serveur avec la clé service_role. Elles sont ici et

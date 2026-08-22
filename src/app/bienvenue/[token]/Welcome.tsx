@@ -46,7 +46,7 @@ export function Welcome({
     // en surface réglementaire.
     try {
       localStorage.setItem(
-        `phateam:plan:${token}`,
+        `regardplus:plan:${token}`,
         JSON.stringify({ partner: partner?.name ?? "", moment }),
       );
     } catch {

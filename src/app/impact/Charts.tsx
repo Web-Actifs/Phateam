@@ -57,7 +57,7 @@ export function CumulativeChart({ data }: { data: MonthPoint[] }) {
       <figcaption className="mb-1 text-[13px] uppercase tracking-[0.12em] text-muted">
         Poids collecté, cumulé
       </figcaption>
-      <p className="mb-5 text-[15px] text-muted">Huit mois d&apos;exploitation sur le réseau lyonnais.</p>
+      <p className="mb-5 text-[15px] text-muted">Huit mois d&apos;exploitation sur le réseau bordelais.</p>
 
       <svg
         viewBox={`0 0 ${W} ${H}`}

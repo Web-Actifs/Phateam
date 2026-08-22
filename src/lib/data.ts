@@ -76,9 +76,9 @@ export async function listDemoAccounts() {
     .from("accounts")
     .select("id,email,account_token,pin,short_code")
     .in("email", [
-      "nouveau@demo.phateam.fr",
-      "actif@demo.phateam.fr",
-      "ancien@demo.phateam.fr",
+      "nouveau@demo.regardplus.fr",
+      "actif@demo.regardplus.fr",
+      "ancien@demo.regardplus.fr",
     ]);
 
   const order = ["nouveau@", "actif@", "ancien@"];

@@ -29,7 +29,7 @@ export default async function Home({ searchParams }: PageProps<"/">) {
 
   return (
     <main className="mx-auto flex min-h-dvh w-full max-w-[430px] flex-col px-6 pb-10 pt-[max(2.5rem,env(safe-area-inset-top))]">
-      <p className="text-[13px] font-medium uppercase tracking-[0.14em] text-muted">Phateam</p>
+      <p className="text-[13px] font-medium uppercase tracking-[0.14em] text-muted">Regard+</p>
 
       <h1 className="mt-8 font-display text-[42px] leading-[1.04] tracking-[-0.015em]">
         Vos emballages
@@ -38,7 +38,7 @@ export default async function Home({ searchParams }: PageProps<"/">) {
       </h1>
       <p className="mt-5 text-[16px] leading-relaxed text-muted">
         Rapportez blisters, opercules, étuis et flacons chez l&apos;un des{" "}
-        <span className="text-ink-deep">{partners.length} opticiens</span> du réseau lyonnais.
+        <span className="text-ink-deep">{partners.length} opticiens</span> du réseau bordelais.
         Vous gagnez des points, dépensables chez ces mêmes partenaires.
       </p>
 

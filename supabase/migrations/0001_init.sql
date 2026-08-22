@@ -1,5 +1,5 @@
 -- =====================================================================
--- Phateam — schéma initial
+-- Regard+ — schéma initial
 --
 -- DEUX DOMAINES VOLONTAIREMENT DISJOINTS (RGPD art. 9)
 --

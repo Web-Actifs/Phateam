@@ -40,7 +40,7 @@ export default async function PassPage({ params }: PageProps<"/pass/[token]">) {
     <main className="mx-auto flex min-h-dvh w-full max-w-[430px] flex-col px-6 pb-10 pt-[max(1.5rem,env(safe-area-inset-top))]">
       <header className="flex items-center justify-between">
         <span className="text-[13px] font-medium tracking-[0.14em] text-muted uppercase">
-          Phateam
+          Regard+
         </span>
         <span className="rounded-full bg-ink-soft px-3 py-1 text-[11px] font-medium tracking-wide text-ink">
           Pass

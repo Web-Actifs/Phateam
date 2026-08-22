@@ -6,7 +6,7 @@
 --
 -- Les noms d'enseigne sont INVENTÉS. Aucune ne reprend, même de loin, une
 -- enseigne d'optique existante. Les adresses, elles, sont réelles : la
--- densité lyonnaise fait partie du pitch.
+-- densité bordelaise fait partie du pitch.
 -- =====================================================================
 
 create or replace function fn_demo_reset()
@@ -33,17 +33,17 @@ begin
   truncate collection_events, point_entries, rewards, accounts, partners
     restart identity cascade;
 
-  -- --- 8 partenaires lyonnais -------------------------------------
+  -- --- 8 partenaires bordelais -------------------------------------
   with ins as (
     insert into partners (name, address, city, lat, lng) values
-      ('Optique Bellecour',      '12 rue de la République',        'Lyon', 45.764000, 4.835700),
-      ('Lunetterie des Pentes',  '45 boulevard de la Croix-Rousse','Lyon', 45.777200, 4.832000),
-      ('Regard Garibaldi',       '17 rue Garibaldi',               'Lyon', 45.760500, 4.852000),
-      ('Atelier Guillotière',    '28 avenue Jean Jaurès',          'Lyon', 45.746000, 4.842000),
-      ('Optique Saint-Jean',     '8 rue Saint-Jean',               'Lyon', 45.762500, 4.827000),
-      ('Vision Confluence',      '112 cours Charlemagne',          'Lyon', 45.740500, 4.818000),
-      ('Lumière Optique',        '65 avenue des Frères Lumière',   'Lyon', 45.744000, 4.870000),
-      ('Le Comptoir de Vitton',  '34 cours Vitton',                'Lyon', 45.769000, 4.856000)
+      ('Optique des Quinconces', '5 place des Quinconces',         'Bordeaux', 44.842000, -0.571600),
+      ('Lunetterie des Chartrons','45 rue Notre-Dame',              'Bordeaux', 44.849000, -0.568000),
+      ('Vue Sainte-Catherine',   '102 rue Sainte-Catherine',        'Bordeaux', 44.839500, -0.574500),
+      ('Atelier Saint-Michel',   '18 rue des Faures',               'Bordeaux', 44.832000, -0.571500),
+      ('Optique Victoire',       '6 place de la Victoire',          'Bordeaux', 44.830900, -0.573500),
+      ('Vision Mériadeck',       '30 cours du Maréchal Juin',       'Bordeaux', 44.841000, -0.587000),
+      ('Lumière Optique',        '112 avenue de la Libération',     'Bordeaux', 44.848000, -0.602000),
+      ('Le Comptoir de la Bastide','34 quai de Queyries',           'Bordeaux', 44.841000, -0.558000)
     returning id
   )
   select array_agg(id) into v_partners from ins;
@@ -62,15 +62,15 @@ begin
   -- --- 3 comptes de démonstration nommés ---------------------------
   -- Documentés dans le README. Codes à 6 chiffres et PIN fixes.
   insert into accounts (email, pin, short_code) values
-    ('nouveau@demo.phateam.fr', '1111', '100001'),
-    ('actif@demo.phateam.fr',   '2222', '100002'),
-    ('ancien@demo.phateam.fr',  '3333', '100003');
+    ('nouveau@demo.regardplus.fr', '1111', '100001'),
+    ('actif@demo.regardplus.fr',   '2222', '100002'),
+    ('ancien@demo.regardplus.fr',  '3333', '100003');
 
   -- --- 120 porteurs anonymes ---------------------------------------
   for i in 1..120 loop
     insert into accounts (email, pin, short_code)
     values (
-      'porteur' || lpad(i::text, 3, '0') || '@demo.phateam.fr',
+      'porteur' || lpad(i::text, 3, '0') || '@demo.regardplus.fr',
       lpad((floor(random() * 10000))::int::text, 4, '0'),
       lpad((200000 + i)::text, 6, '0')
     );
@@ -119,7 +119,7 @@ begin
   -- --- profils des 3 comptes de démonstration -----------------------
   -- « actif » : 22 points, soit 3 points sous le don à 25. Il faut qu'on
   -- puisse montrer « plus que 3 points » à l'écran pendant la démo.
-  select id into v_acc from accounts where email = 'actif@demo.phateam.fr';
+  select id into v_acc from accounts where email = 'actif@demo.regardplus.fr';
   insert into point_entries (account_id, amount, reason, eur_value, partner_class, idempotency_key, created_at)
   values (v_acc, 10, 'deposit', 0.10, 'optician', 'seed-actif-1', now() - interval '31 days'),
          (v_acc, 12, 'deposit', 0.12, 'optician', 'seed-actif-2', now() - interval '9 days');
@@ -128,7 +128,7 @@ begin
          (v_partners[3], 'flacon de solution', 120, now() - interval '9 days');
 
   -- « ancien » : long historique, deux récompenses déjà dépensées.
-  select id into v_acc from accounts where email = 'ancien@demo.phateam.fr';
+  select id into v_acc from accounts where email = 'ancien@demo.regardplus.fr';
   for i in 1..14 loop
     v_grams := 80 + (i * 17) % 300;
     v_when  := now() - make_interval(days => 230 - (i * 16));

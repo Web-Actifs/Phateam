@@ -13,7 +13,7 @@ const check = (ok, label, detail='') => {
 
 // --- jeu d'essai ---------------------------------------------------
 const { rows:[partner] } = await c.query(
-  `insert into partners (name, address, city) values ('TEST Optique','1 rue du Test','Lyon') returning id`);
+  `insert into partners (name, address, city) values ('TEST Optique','1 rue du Test','Bordeaux') returning id`);
 const { rows:[acc] } = await c.query(
   `insert into accounts (email, pin, short_code) values ($1,'1234','TST001') returning id, account_token`,
   [`test-${Date.now()}@example.test`]);

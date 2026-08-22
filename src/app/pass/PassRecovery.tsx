@@ -4,7 +4,7 @@ import { useEffect, useState, useSyncExternalStore } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
-export const LAST_PASS_KEY = "phateam:last-pass";
+export const LAST_PASS_KEY = "regardplus:last-pass";
 
 // Lecture de localStorage sans état intermédiaire : au rendu serveur
 // l'instantané vaut null, au rendu client il vaut le code mémorisé. Le
@@ -37,7 +37,7 @@ export function PassRecovery() {
 
   return (
     <main className="mx-auto flex min-h-dvh w-full max-w-[430px] flex-col justify-center px-6 py-12">
-      <p className="text-[13px] font-medium uppercase tracking-[0.14em] text-muted">Phateam</p>
+      <p className="text-[13px] font-medium uppercase tracking-[0.14em] text-muted">Regard+</p>
       <h1 className="mt-6 font-display text-[34px] leading-[1.08] tracking-[-0.015em]">
         Retrouvons votre pass.
       </h1>

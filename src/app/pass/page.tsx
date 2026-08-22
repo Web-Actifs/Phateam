@@ -1,6 +1,6 @@
 import { PassRecovery } from "./PassRecovery";
 
-export const metadata = { title: "Phateam — retrouver mon pass" };
+export const metadata = { title: "Regard+ — retrouver mon pass" };
 
 /**
  * Filet de sécurité pour `/pass` sans jeton.

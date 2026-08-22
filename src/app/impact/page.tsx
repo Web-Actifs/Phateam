@@ -30,7 +30,7 @@ export default async function ImpactPage() {
     <main className="mx-auto w-full max-w-5xl px-8 py-16 lg:py-24">
       <header>
         <p className="text-[13px] font-medium uppercase tracking-[0.16em] text-muted">
-          Phateam · Réseau lyonnais
+          Regard+ · Réseau bordelais
         </p>
         <h1 className="mt-6 max-w-3xl font-display text-[clamp(2.6rem,6vw,4.4rem)] leading-[1.02] tracking-[-0.02em]">
           {kilos.toLocaleString("fr-FR", { maximumFractionDigits: 0 })} kg d&apos;emballages
@@ -77,7 +77,7 @@ export default async function ImpactPage() {
             Densité du réseau
           </figcaption>
           <p className="mb-6 text-[15px] text-muted">
-            Huit opticiens partenaires, tous dans Lyon intra-muros.
+            Huit opticiens partenaires, tous dans Bordeaux intra-muros.
           </p>
           <ul className="divide-y divide-line border-y border-line">
             {s.partners.map((p) => (

@@ -17,13 +17,13 @@ const instrumentSerif = Instrument_Serif({
 });
 
 export const metadata: Metadata = {
-  title: "Phateam",
+  title: "Regard+",
   description:
     "Rapportez vos emballages de lentilles chez votre opticien, gagnez des points.",
   manifest: "/manifest.webmanifest",
   appleWebApp: {
     capable: true,
-    title: "Phateam",
+    title: "Regard+",
     statusBarStyle: "default",
   },
 };
