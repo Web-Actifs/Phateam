@@ -11,12 +11,14 @@ ni scalable, ni complet, ni sécurisé pour la production — c'est délibéré.
 
 ```bash
 npm install
-cp .env.local.example .env.local     # puis y mettre les valeurs du projet Supabase
+#  créer .env.local avec les variables du tableau ci-dessous
 npm run db:migrate                   # applique supabase/migrations/*.sql
 npm run db:seed                      # jeu de démonstration
 npm run dev
 ```
 
+Aucun fichier d'exemple n'est versionné : `.gitignore` exclut tout `.env*` sans
+exception, pour qu'une clé collée au mauvais endroit ne parte jamais dans un commit.
 `.env.local` attend :
 
 | Variable | Où la trouver |
@@ -119,9 +121,20 @@ raisonnement sont dans `CLAUDE.md` ; en bref :
 1. `git push` vers un dépôt GitHub.
 2. Vercel → **New Project** → importer le dépôt.
 3. Renseigner les trois variables d'environnement (`NEXT_PUBLIC_SUPABASE_URL`,
-   `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`). Les variables
-   `SUPABASE_DB_*` ne servent qu'aux migrations locales et sont inutiles en ligne.
+   `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`) pour les trois
+   environnements (Production, Preview, Development). Les variables `SUPABASE_DB_*`
+   ne servent qu'aux migrations locales et sont inutiles en ligne.
 4. Déployer. Les migrations sont déjà appliquées sur le projet Supabase distant.
+
+Le build réussit même sans variables d'environnement — aucune page n'interroge la base
+au moment du build. C'est à la première requête que l'absence de clé se voit, avec un
+message explicite. Si vous ajoutez les variables après un premier déploiement, il faut
+**redéployer** : Vercel ne réinjecte pas les variables dans un build existant.
+
+`vercel.json` épingle les fonctions à `dub1` (Dublin). Le projet Supabase est en
+`eu-west-1` (Irlande) : sans cela, Vercel place les fonctions à Washington par défaut
+et chaque lecture de solde traverse l'Atlantique deux fois. Si vous changez de région
+Supabase, changez celle-ci en conséquence.
 
 ## Hors périmètre
 
