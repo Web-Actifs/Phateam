@@ -67,6 +67,32 @@ export async function findAccount(ref: string): Promise<Account | null> {
   return data ?? null;
 }
 
+/**
+ * Les trois comptes de démonstration nommés, dans un ordre parlant :
+ * du compte vide au compte chargé. Les 120 porteurs anonymes sont exclus.
+ */
+export async function listDemoAccounts() {
+  const { data } = await supabaseAdmin()
+    .from("accounts")
+    .select("id,email,account_token,pin,short_code")
+    .in("email", [
+      "nouveau@demo.phateam.fr",
+      "actif@demo.phateam.fr",
+      "ancien@demo.phateam.fr",
+    ]);
+
+  const order = ["nouveau@", "actif@", "ancien@"];
+  const sorted = (data ?? []).sort(
+    (a, b) =>
+      order.findIndex((p) => a.email.startsWith(p)) -
+      order.findIndex((p) => b.email.startsWith(p)),
+  );
+
+  return Promise.all(
+    sorted.map(async (a) => ({ ...a, balance: await getBalance(a.id) })),
+  );
+}
+
 export async function getAccountByEmail(email: string): Promise<Account | null> {
   const { data } = await supabaseAdmin()
     .from("accounts")

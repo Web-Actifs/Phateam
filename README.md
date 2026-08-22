@@ -57,8 +57,13 @@ codes à partir de `200001`.
 
 ## Écrans
 
+**Commencez par `/demo`** — c'est la salle de contrôle : les QR des trois comptes de
+démonstration à scanner depuis un téléphone, les huit boutiques en un clic, l'écran
+projeté et le déroulé en six temps. Aucun identifiant à retenir.
+
 | Route | Pour qui |
 |---|---|
+| `/demo` | **vous** — point de départ de toute démonstration |
 | `/` | porteur — inscription, un seul champ |
 | `/bienvenue/[token]` | porteur — ajout à l'écran d'accueil, puis formulation du plan |
 | `/pass/[token]` ou `/pass/[code]` | porteur — le pass : QR, solde, code à 4 chiffres |

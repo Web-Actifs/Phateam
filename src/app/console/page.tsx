@@ -48,10 +48,12 @@ export default async function ConsoleHome() {
       </ul>
 
       <div className="mt-10 flex flex-wrap items-center justify-between gap-4 text-[13px] text-muted">
-        <p>
-          Écran investisseurs :{" "}
+        <p className="flex gap-5">
+          <Link href="/demo" className="text-ink underline underline-offset-4">
+            Salle de contrôle
+          </Link>
           <Link href="/impact" className="text-ink underline underline-offset-4">
-            /impact
+            Écran investisseurs
           </Link>
         </p>
         <DemoReset />
