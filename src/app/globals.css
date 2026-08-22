@@ -1,26 +1,94 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* =====================================================================
+   Phateam — jetons de design
+
+   Registre : optique et santé visuelle. Beaucoup de blanc, une seule
+   couleur d'accent (bleu encre), une typographie éditoriale pour les
+   grands chiffres. Pas de vert écologie, pas de feuille, pas de planète.
+   Pas de mode sombre : chaque écran superflu dilue la démonstration.
+   ===================================================================== */
+
+@theme {
+  --color-ink: #1b3a6b;
+  --color-ink-hover: #16305a;
+  --color-ink-deep: #0f1729;
+  --color-ink-soft: #eef2f8;
+  --color-ink-tint: #dbe4f0;
+  --color-paper: #ffffff;
+  --color-muted: #6b7a90;
+  --color-line: #e3e8ef;
+  --color-danger: #b3261e;
+  --color-danger-soft: #fdf0ef;
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-instrument-serif), Georgia, serif;
+
+  --radius-xl2: 1.25rem;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-paper);
+  color: var(--color-ink-deep);
+  font-family: var(--font-sans);
+  /* Le parcours porteur se montre sur un téléphone tenu en main :
+     pas de rebond élastique qui trahirait la page web. */
+  overscroll-behavior-y: none;
+}
+
+/* Chiffres alignés et de largeur fixe : un solde qui passe de 9 à 10
+   ne doit pas faire sauter la mise en page. */
+.tabular {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+/* --- mouvement ------------------------------------------------------
+   Le crédit de points est le moment de récompense de la démonstration.
+   C'est ce dont les gens se souviennent. */
+
+@keyframes count-pop {
+  0%   { transform: scale(1);    }
+  35%  { transform: scale(1.14); }
+  100% { transform: scale(1);    }
+}
+.animate-count-pop { animation: count-pop 620ms cubic-bezier(0.22, 1, 0.36, 1); }
+
+@keyframes rise-fade {
+  0%   { opacity: 0; transform: translateY(14px); }
+  100% { opacity: 1; transform: translateY(0);    }
+}
+.animate-rise { animation: rise-fade 480ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+
+@keyframes halo {
+  0%   { opacity: 0.55; transform: scale(0.85); }
+  100% { opacity: 0;    transform: scale(1.9);  }
+}
+.animate-halo { animation: halo 900ms cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+
+@keyframes sweep {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(220%);  }
+}
+.animate-sweep { animation: sweep 1.4s cubic-bezier(0.4, 0, 0.2, 1) infinite; }
+
+@keyframes draw-line {
+  from { stroke-dashoffset: var(--dash, 1200); }
+  to   { stroke-dashoffset: 0; }
+}
+.animate-draw {
+  stroke-dasharray: var(--dash, 1200);
+  animation: draw-line 1.6s cubic-bezier(0.33, 1, 0.68, 1) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-count-pop, .animate-rise, .animate-halo,
+  .animate-sweep, .animate-draw {
+    animation: none;
+  }
+  .animate-draw { stroke-dashoffset: 0; }
 }
