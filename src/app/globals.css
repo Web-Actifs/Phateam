@@ -92,3 +92,93 @@ body {
   }
   .animate-draw { stroke-dashoffset: 0; }
 }
+
+/* =====================================================================
+   Thème du pass — switch discret (PassThemeShell), portée locale à
+   /pass/[token] uniquement. « Encre » ci-dessus reste la valeur par
+   défaut du produit ; ces variantes redéfinissent les mêmes jetons dans
+   un sous-arbre marqué [data-theme], jamais sur <html>.
+   ===================================================================== */
+
+[data-theme="spectre"] {
+  --color-ink: #5a4fa0;
+  --color-ink-hover: #493f87;
+  --color-ink-deep: #221a3d;
+  --color-ink-soft: #efecfa;
+  --color-ink-tint: #ddd4f5;
+  --color-muted: #79768e;
+  --font-display: var(--font-fraunces), Georgia, serif;
+}
+
+[data-theme="verre"] {
+  --color-ink: #2c4a75;
+  --color-ink-hover: #223a5c;
+  --color-ink-deep: #1c2e49;
+  --color-ink-soft: #e8f0fc;
+  --color-ink-tint: #cfe0f7;
+  --color-muted: #6a7f9e;
+  --font-display: var(--font-newsreader), Georgia, serif;
+}
+
+[data-theme="ambre"] {
+  --color-ink: #a0621a;
+  --color-ink-hover: #824e14;
+  --color-ink-deep: #3a2410;
+  --color-ink-soft: #f6ecd6;
+  --color-ink-tint: #efd9ad;
+  --color-muted: #93815a;
+  --font-display: var(--font-bricolage), sans-serif;
+}
+
+[data-theme="nuit"] {
+  --color-paper: #0f1013;
+  --color-ink-deep: #f1efe6;
+  --color-ink: #d9b969;
+  --color-ink-hover: #c2a253;
+  --color-ink-soft: #211d10;
+  --color-ink-tint: #3a3319;
+  --color-muted: #9a9ea6;
+  --color-line: #2a2d33;
+  --font-display: var(--font-newsreader), Georgia, serif;
+}
+
+[data-theme="spectre"] .font-display,
+[data-theme="verre"] .font-display,
+[data-theme="nuit"] .font-display {
+  font-style: italic;
+}
+[data-theme="ambre"] .font-display {
+  font-weight: 700;
+}
+
+/* Halo derrière le solde — un dégradé propre à chaque thème, absent en
+   Encre (aucune règle ne matche sans [data-theme]). */
+[data-theme] [data-halo] {
+  isolation: isolate;
+}
+[data-theme] [data-halo]::before {
+  content: "";
+  position: absolute;
+  inset: -24px -40px auto -40px;
+  height: 220px;
+  z-index: -1;
+  pointer-events: none;
+  filter: blur(34px);
+}
+[data-theme="spectre"] [data-halo]::before {
+  opacity: 0.5;
+  background: conic-gradient(from 200deg, #7c6fd1, #5a8fd6, #4fb3a6, #e8b25c, #e07d6f, #7c6fd1);
+}
+[data-theme="verre"] [data-halo]::before {
+  opacity: 0.8;
+  filter: blur(20px);
+  background: linear-gradient(160deg, #cfe0f7, #ffffff 70%);
+}
+[data-theme="ambre"] [data-halo]::before {
+  opacity: 0.35;
+  background: linear-gradient(135deg, #f8cf94, #ea8f60 60%, #d9695f);
+}
+[data-theme="nuit"] [data-halo]::before {
+  opacity: 0.4;
+  background: radial-gradient(circle at 30% 30%, #e8c877, transparent 70%);
+}

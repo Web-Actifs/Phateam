@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Instrument_Serif } from "next/font/google";
+import { Geist, Instrument_Serif, Fraunces, Newsreader, Bricolage_Grotesque } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -13,6 +13,25 @@ const instrumentSerif = Instrument_Serif({
   variable: "--font-instrument-serif",
   weight: "400",
   style: ["normal", "italic"],
+  subsets: ["latin"],
+});
+
+// Polices des thèmes alternatifs du pass (switch discret, voir
+// PassThemeShell). Chargées globalement mais inertes tant que le porteur
+// ne change pas de thème : seul --font-display change de valeur.
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
+  style: ["italic"],
+  subsets: ["latin"],
+});
+const newsreader = Newsreader({
+  variable: "--font-newsreader",
+  style: ["italic"],
+  subsets: ["latin"],
+});
+const bricolageGrotesque = Bricolage_Grotesque({
+  variable: "--font-bricolage",
+  weight: ["700"],
   subsets: ["latin"],
 });
 
@@ -41,7 +60,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="fr"
-      className={`${geistSans.variable} ${instrumentSerif.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${instrumentSerif.variable} ${fraunces.variable} ${newsreader.variable} ${bricolageGrotesque.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-paper text-ink-deep">
         {children}

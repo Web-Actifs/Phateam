@@ -91,7 +91,7 @@ export function PassLive({
   }, [balance, router]);
 
   return (
-    <section className="relative mt-10">
+    <section className="relative mt-10" data-halo>
       {delta !== null && delta > 0 && (
         <>
           <span

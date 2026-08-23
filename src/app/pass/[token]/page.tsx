@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { QrCode } from "@/components/QrCode";
 import { findAccount, getBalance, getLedger, nextReward, affordableReward } from "@/lib/data";
 import { PassLive } from "./PassLive";
+import { PassThemeShell } from "./PassThemeShell";
 
 export const dynamic = "force-dynamic";
 
@@ -37,6 +38,7 @@ export default async function PassPage({ params }: PageProps<"/pass/[token]">) {
   const progress = next ? Math.min(100, Math.round((balance / next.cost) * 100)) : 100;
 
   return (
+    <PassThemeShell>
     <main className="mx-auto flex min-h-dvh w-full max-w-[430px] flex-col px-6 pb-10 pt-[max(1.5rem,env(safe-area-inset-top))]">
       <header className="flex items-center justify-between">
         <span className="text-[13px] font-medium tracking-[0.14em] text-muted uppercase">
@@ -166,5 +168,6 @@ export default async function PassPage({ params }: PageProps<"/pass/[token]">) {
         Vos points ne sont ni convertibles en euros ni transférables.
       </p>
     </main>
+    </PassThemeShell>
   );
 }
